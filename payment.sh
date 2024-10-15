@@ -11,7 +11,6 @@ app_prerequisites
 
 
 echo -e "$color Download application dependencies $no_color"
-cd /app 
 pip3 install -r requirements.txt
 
 
