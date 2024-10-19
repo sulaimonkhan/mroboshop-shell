@@ -4,26 +4,26 @@ log_file=/tmp/roboshop.log
 rm -f $log_file
 
 app_prerequisites() {
-  print_heading "$color Add Application user" 
-  id robboshop &>>log_file
+  print_heading "Add Application user" 
+  id roboshop &>>$log_file
   if [ $? -ne 0 ]; then
     useradd roboshop &>>$log_file
   fi  
   status_check $?
 
-  print_heading "$color Create Application Directory"
+  print_heading "Create Application Directory"
   rm -rf /app &>>$log_file
   mkdir /app  &>>$log_file
   status_check $?
 
 
-  print_heading "$color Download Application Content"
+  print_heading "Download Application Content"
   curl -L -o /tmp/$app_name.zip https://roboshop-artifacts.s3.amazonaws.com/$app_name-v3.zip &>>$log_file
   status_check $?
 
   cd /app
 
-  print_heading "$color Extract Application Content"
+  print_heading "Extract Application Content"
   unzip /tmp/$app_name.zip &>>$log_file
   status_check $?
 }
