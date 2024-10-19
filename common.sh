@@ -5,7 +5,10 @@ rm -f $log_file
 
 app_prerequisites() {
   print_heading "$color Add Application user" 
-  useradd roboshop &>>$log_file
+  id robboshop &>>log_file
+  if [ $? -ne 0 ]; then
+    useradd roboshop &>>$log_file
+  fi  
   status_check $?
 
   print_heading "$color Create Application Directory"
