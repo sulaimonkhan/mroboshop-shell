@@ -90,7 +90,7 @@ python_setup() {
   app_prerequisites
 
 
-  print_heading "Download application dependencies"
+  print_heading "Download application Dependencies"
   pip3 install -r requirements.txt &>>$log_file
   status_check $?
   
@@ -106,8 +106,10 @@ maven_setup() {
   dnf install maven -y &>>$log_file
   status_check $?
   
+  app_prerequisites
+
   print_heading "Download Application Dependiences"
-  mvn clean package 
+  mvn clean package &>>$log_file
   mv target/$app_name-1.0.jar $app_name.jar &>>$log_file
   status_check $?
 
@@ -116,7 +118,7 @@ maven_setup() {
   status_check $?
 
   for sql_file in schema app-user master-data; do
-    print_heading "LOAD SQL File"
+    print_heading "LOAD SQL File - $sql_file"
     mysql -h mysql.sulaimondevopsb72.online -uroot -pRoboShop@1 < /app/db/$sql_file.sql &>>$log_file
     status_check $?
   done
