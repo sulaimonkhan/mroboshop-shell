@@ -5,7 +5,7 @@ print_heading "Copy MongoDB repo file"
 cp mongodb.repo /etc/yum.repos.d/mongodb.repo &>>$log_file
 status_check $?
 
-print_heading "Install MongoDB service"
+print_heading "Install MongoDB Server"
 dnf install mongodb-org -y &>>$log_file
 status_check $?
 
