@@ -1,5 +1,5 @@
 source common.sh
 app_name=cart
 
-node_setup
+nodejs_setup
 
