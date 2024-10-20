@@ -2,7 +2,7 @@ source common.sh
 app_name=mongodb
 
 print_heading "Copy MongoDB repo file"
-cp mongodb.repo /etc/yum.repos.d/mongo.repo &>>$log_file
+cp mongodb.repo /etc/yum.repos.d/mongodb.repo &>>$log_file
 status_check $?
 
 print_heading "Install MongoDB service"

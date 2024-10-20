@@ -58,7 +58,7 @@ systemd_setup() {
 
 nodejs_setup() {
   print_heading "Disable Default NodeJS "
-  dnf module disable nodejs - &>>$log_file
+  dnf module disable nodejs -y &>>$log_file
   status_check $?
 
   print_heading "Enable NodeJs 20"
