@@ -46,6 +46,7 @@ systemd_setup() {
 
   print_heading "Copy the Service File"
   cp $scrpits_path/$app_name.service /etc/systemd/system/$app_name.service &>>$log_file
+  sed -i -e"s/RABBITMQ_PASSWORD/${RABBITMQ_PASSWORD}/" /etc/systemd/system/$app_name.service &>>$log_file
   status_check $?
 
   print_heading "Start Application Service File"
@@ -96,10 +97,7 @@ python_setup() {
   
   systemd_setup
 
-  
 }
-
-
 
 maven_setup() {
   
@@ -113,17 +111,6 @@ maven_setup() {
   mvn clean package &>>$log_file
   mv target/$app_name-1.0.jar $app_name.jar &>>$log_file
   status_check $?
-
-  print_heading "Install MYSQL Client"
-  dnf install mysql -y &>>$log_file
-  status_check $?
-
-  for sql_file in schema app-user master-data; do
-  print_heading "Load SQL File - $sql_file"
-  mysql -h mysql.sulaimondevopsb72.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/$sql_file.sql &>>$log_file
-  status_check $?
-  done
-
 
   systemd_setup
 }

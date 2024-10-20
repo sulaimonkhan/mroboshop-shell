@@ -1,6 +1,16 @@
 source common.sh
 app_name=dispatch
 
+if [ -z "$1" ]; then
+  echo INput Rabbitmq Password is missing
+  exit 1
+fi
+
+
+RABBITMQ_PASSWORD=$1
+
+
+
 print_heading "copy dispatch service file" 
 cp dispatch.service /etc/systemd/system/dispatch.service &>>$log_file 
 status_check $?
