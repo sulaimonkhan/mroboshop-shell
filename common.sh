@@ -98,10 +98,11 @@ python_setup() {
 
   
 }
+
+
+
 maven_setup() {
   
-  
-
   print_heading "Install Maven"
   dnf install maven -y &>>$log_file
   status_check $?
@@ -118,10 +119,11 @@ maven_setup() {
   status_check $?
 
   for sql_file in schema app-user master-data; do
-    print_heading "LOAD SQL File - $sql_file"
-    mysql -h mysql.sulaimondevopsb72.online -uroot -pRoboShop@1 < /app/db/$sql_file.sql &>>$log_file
-    status_check $?
+  print_heading "Load SQL File - $sql_file"
+  mysql -h mysql.rdevopsb81.online -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/$sql_file.sql &>>$log_file
+  status_check $?
   done
+  
 
   systemd_setup
 }
