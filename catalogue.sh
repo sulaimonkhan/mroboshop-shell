@@ -13,8 +13,9 @@ dnf install mongodb-mongosh -y &>>$log_file
 status_check $?
 
 print_heading "Load Master Data"
-mongosh --host mongodb.sulaimondevopsb72.online </app/db/master-data.js &>>$log_file
+mongosh --host mongodb.sulaimondevopsb72.online </app/db/master-data.js  &>>$log_file
 status_check $?
+
 
 print_heading "Restart Catalogue Service"
 systemctl restart catalogue &>>$log_file
