@@ -2,7 +2,7 @@ color="\e[35m"
 no_color="\e[0m"
 log_file=/tmp/roboshop.log
 rm -f $log_file
-scrpits_path=$(pwd)
+scripts_path=$(pwd)
 
 app_prerequisites() {
   print_heading "Add Application user" 
