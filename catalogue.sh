@@ -2,7 +2,7 @@ source common.sh
 app_name=catalogue
 
 
-nodjes_setup
+nodejs_setup
 
 print_heading "Copy MongoDB repo file"
 cp $scripts_path/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>$log_file
