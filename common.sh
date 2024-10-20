@@ -56,7 +56,7 @@ systemd_setup() {
   status_check $?
 }
 
-node_setup() {
+nodejs_setup() {
   print_heading "Disable Default NodeJS "
   dnf module disable nodejs - &>>$log_file
   status_check $?
